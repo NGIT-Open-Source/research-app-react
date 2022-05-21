@@ -6,5 +6,4 @@ export interface STATE {
 
 interface ACTION {
   type: string
-  payload: any
 }
