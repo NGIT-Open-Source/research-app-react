@@ -11,6 +11,10 @@ const Home: NextPage = () => {
     if (typeof window !== 'undefined') {
       router.push('/Login')
     }
+  } else {
+    if (typeof window !== 'undefined') {
+      router.push('/dashboard')
+    }
   }
   return (
     <>
