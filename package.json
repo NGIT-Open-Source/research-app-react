@@ -1,0 +1,42 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.5.0",
+    "js-cookie": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "next": "^12.1.6",
+    "next-redux-wrapper": "^7.0.5",
+    "react": "^17.0.2",
+    "react-animated-modal": "^1.1.1",
+    "react-bootstrap": "^2.4.0",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.31.1",
+    "react-modal": "^3.15.1",
+    "react-redux": "^8.0.1",
+    "react-router-dom": "^6.3.0",
+    "redux": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cookie": "^0.5.1",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/node": "17.0.4",
+    "@types/react": "17.0.38",
+    "@types/react-animated-modal": "^1.1.1",
+    "@types/react-modal": "^3.13.1",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
+    "prettier-plugin-tailwindcss": "^0.1.1",
+    "tailwindcss": "^3.0.7",
+    "typescript": "4.5.4"
+  }
+}
