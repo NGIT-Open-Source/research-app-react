@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import Router, { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { STATE } from '../typings'
@@ -11,7 +12,16 @@ const Home: NextPage = () => {
       router.push('/Login')
     }
   }
-  return <>HOMEE</>
+  return (
+    <>
+      HOMEE
+      <br />
+      <Link href={'/dashboard'}> SOME TEXT </Link>
+      <br />
+      <Link href={'/Login'}> SOME TEXT2 </Link>
+      <br />
+    </>
+  )
 }
 
 export default Home

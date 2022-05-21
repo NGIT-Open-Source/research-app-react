@@ -13,8 +13,24 @@ function MyApp({ Component, pageProps }: AppProps) {
     if (!LOGGED) {
       const value = localStorage.getItem('x-access-token')
       if (value) {
-        dispatch(LOGIN())
+        // console.log(value, 'we are here')
+        const check = async (value: string) => {
+          const res = await fetch('/api/validateJWT', {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify({ value }),
+          }).then((resp) => resp.json())
+          // console.log()
+          if (res.Login) {
+            console.log(res, 'response bruah')
+            return true
+          }
+        }
+        check(value).then((resp) => {
+          console.log(resp, ' wtff')
+        })
       }
+      dispatch(LOGIN())
     }
   }
   return <Component {...pageProps} />

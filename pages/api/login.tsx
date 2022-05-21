@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { serialize } from 'cookie'
 import jwt from 'jsonwebtoken'
-
+import bcrypt from 'bcryptjs'
 type Data = {
   Login: Boolean
   token: string | null | undefined
@@ -45,30 +45,34 @@ export default function handler(
       })
       return
     } else {
-      // console.log('😁')
-      const payload = {
-        Date: Date.now().toString(),
-      }
-      const KEY = 'SECRET'
-      const Token = jwt.sign(payload, KEY, {
-        expiresIn: 31556926, // 1 year in seconds
-      })
+      bcrypt.hash('bacon', 8, function (err, hash) {
+        const payload = {
+          SEC_ID: hash,
+          Date: Date.now().toString(),
+        }
+        console.log(payload, 'payload')
 
-      const serial = serialize('JWT', Token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'strict',
-        maxAge: 60 * 60 * 24 * 30,
-        path: '/',
-      })
-      res.setHeader('Set-cookie', serial)
-      res.status(200).json({
-        Login: true,
-        token: Token,
-        msg: 'PERFECT 💹',
-      })
+        const KEY = 'SECRET'
+        const Token = jwt.sign(payload, KEY, {
+          expiresIn: 31556926, // 1 year in seconds
+        })
 
-      return
+        const serial = serialize('JWT', Token, {
+          httpOnly: true,
+          secure: true,
+          sameSite: 'strict',
+          maxAge: 60 * 60 * 24 * 30,
+          path: '/',
+        })
+        res.setHeader('Set-cookie', serial)
+        res.status(200).json({
+          Login: true,
+          token: Token,
+          msg: 'PERFECT 💹',
+        })
+
+        return
+      })
     }
   } else {
     res.status(200).json({
