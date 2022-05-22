@@ -7,3 +7,5 @@ export interface STATE {
 interface ACTION {
   type: string
 }
+
+declare module '@tanstack/react-table'

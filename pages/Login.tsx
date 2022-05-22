@@ -3,6 +3,7 @@ import Router from 'next/router'
 import Modal from 'react-modal'
 import { useDispatch } from 'react-redux'
 import { LOGIN } from '../redux/Login/action'
+import Link from 'next/link'
 
 export default function Login() {
   const [modelStatus, setmodelStatus] = useState<boolean>(false)
@@ -34,13 +35,18 @@ export default function Login() {
       credentials: 'include',
       body: JSON.stringify({ user, password }),
     }).then((resp) => resp.json())
-    console.log(res)
+    // console.log(res)
     if (!res.Login) {
       setmodel3Status(true)
       seterrormsg(res.msg)
       return
     }
-    localStorage.setItem('x-access-token', res.token)
+    const now = new Date()
+    const item = {
+      value: res.token,
+      expiry: now.getTime() + 8640000,
+    }
+    localStorage.setItem('JWTcipher', JSON.stringify(item))
     dispatch(LOGIN())
     Router.push('/dashboard')
   }

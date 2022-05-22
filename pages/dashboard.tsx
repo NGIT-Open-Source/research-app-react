@@ -6,12 +6,15 @@ import { useSelector } from 'react-redux'
 import { STATE } from '../typings'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { GetServerSideProps } from 'next'
+import dbconnect from '../utils/dbconnect'
+import Subject from '../models/Subject'
+import { Table } from 'reactable'
+import BootstrapTable from 'react-bootstrap-table-next'
+import paginationFactory from 'react-bootstrap-table2-paginator'
+import celledit, { Type } from 'react-bootstrap-table2-editor'
+import filter, { textFilter } from 'react-bootstrap-table2-filter'
 interface POSTS {
-  posts: {
-    Operation: boolean
-    msg: string
-    object: Array<POST>
-  }
+  resp: Array<POST>
 }
 
 interface POST {
@@ -22,8 +25,24 @@ interface POST {
   Location: string
 }
 
-export default function dashboard({ posts }: POSTS) {
-  const data = posts.object
+export default function dashboard({ resp }: POSTS) {
+  type Person = {
+    firstName: string
+    lastName: string
+    age: number
+    visits: number
+    status: string
+    progress: number
+  }
+
+  const data = resp.reverse()
+  console.log(data, 'graddle')
+  const modified = data.map((post) => ({
+    Hospital: post.Hospital,
+    RadioEmail: post.RadioEmail,
+    Location: post.Location,
+    Radiologist: post.Radiologist,
+  }))
 
   const [model2Status, setmodel2Status] = useState<boolean>(false)
   const [Hospital, setHospital] = useState<string>('')
@@ -80,14 +99,70 @@ export default function dashboard({ posts }: POSTS) {
         alert(res.msg)
         return
       }
+      setHospital('')
+      setRadiologist('')
+      setRadioEmail('')
+      setpassword('')
+      setConfirm('')
+      setLocation('')
     }
   }
+
+  const colums = [
+    {
+      dataField: 'Hospital',
+      text: 'Hospital',
+      sort: true,
+    },
+    {
+      dataField: 'Radiologist',
+      text: 'Radiologist',
+      sort: true,
+    },
+    {
+      dataField: 'RadioEmail',
+      text: 'RadioEmail',
+      sort: true,
+    },
+    {
+      dataField: 'Location',
+      text: 'Location',
+      sort: true,
+    },
+  ]
+
   return (
-    <div>
-      <div>
-        {data.map((post) => (
-          <h1 key={post._id}>{post.Location}</h1>
-        ))}
+    <div className="my-12 max-h-full">
+      <div className="mx-auto max-w-5xl space-y-4 border-2 p-8 shadow-sm">
+        <div>
+          <h2 className="font-mono text-2xl">Hospitals Under Control</h2>
+          <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-gray-300 after:mt-0.5 after:flex-1 after:border-t after:border-gray-300"></div>
+        </div>
+
+        <BootstrapTable
+          columns={colums}
+          keyField="_id"
+          data={data}
+          striped
+          hover
+          condensed
+          pagination={paginationFactory()}
+          cellEdit={celledit({
+            mode: 'click',
+          })}
+          filter={filter()}
+        />
+        {/* <div className="overflow-y-scroll ">
+          {data.map((post) => (
+            <div key={post._id}>
+              <div className="flex justify-around">
+                <div>{post.Location}</div>
+                <div>{post.Hospital}</div>
+                <div>{post.Radiologist}</div>
+              </div>
+            </div>
+          ))}
+        </div> */}
       </div>
       <button
         type="button"
@@ -220,11 +295,13 @@ export default function dashboard({ posts }: POSTS) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/api/getSubject')
-  const posts = await res.json()
-  console.log(posts['object'], 'trying')
+  dbconnect()
+  const notes = await Subject.find({}).lean()
+  // console.log(notes, 'notes')
+  const resp = JSON.parse(JSON.stringify(notes))
+  // console.log(resp, 'resp')
 
   return {
-    props: { posts }, // will be passed to the page component as props
+    props: { resp }, // will be passed to the page component as props
   }
 }

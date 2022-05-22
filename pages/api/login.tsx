@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// @ts-nocheck
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { serialize } from 'cookie'
 import jwt from 'jsonwebtoken'
@@ -45,7 +46,7 @@ export default function handler(
       })
       return
     } else {
-      bcrypt.hash('bacon', 8, function (err, hash) {
+      bcrypt.hash(process.env.NEXT_PUBLIC_JAYENDRA, 8, function (err, hash) {
         const payload = {
           SEC_ID: hash,
           Date: Date.now().toString(),
