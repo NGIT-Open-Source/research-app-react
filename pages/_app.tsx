@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             }
           }
           check(value).then((resp) => {
-            console.log(resp, ' wtff')
+            // console.log(resp, ' wtff')
           })
           try {
             var decoded = jwt.verify(item.value, 'SECRET')

@@ -16,15 +16,20 @@ const Home: NextPage = () => {
       router.push('/dashboard')
     }
   }
+  if (!LOGGED) {
+    // return <>HI</>
+  }
   return (
-    <>
-      HOMEE
-      <br />
-      <Link href={'/dashboard'}> SOME TEXT </Link>
-      <br />
-      <Link href={'/Login'}> SOME TEXT2 </Link>
-      <br />
-    </>
+    <div
+      id="loading-screen"
+      className="fixed top-0 left-0 z-50 block  h-full w-full bg-white opacity-75"
+    >
+      hi
+      <span className="relative top-1/2 my-0 mx-auto block h-0 w-0 text-green-500 opacity-75">
+        <i className="fas fa-circle-notch fa-spin fa-5x"></i>
+        hi
+      </span>
+    </div>
   )
 }
 

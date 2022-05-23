@@ -10,3 +10,228 @@
     opacity: 1;
   }
 }
+body {
+  background-color: #e9ecf3;
+}
+
+.App {
+  margin: 30px;
+}
+
+table {
+  color: #263381;
+}
+
+.form-control {
+  margin-top: 15px;
+  border-radius: 0;
+  padding: 0.15rem 0.75rem;
+}
+
+.form-control::placeholder {
+  color: #b7b7b7;
+  opacity: 1; /* Firefox */
+  font-weight: 600;
+}
+
+.sortable span {
+  display: block;
+  float: right;
+}
+
+.cellWeight600 {
+  font-weight: 800;
+}
+
+.Dispatched {
+  color: red;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+tr {
+  /*background-color: #FFFFFF;*/
+  border-top: 5px solid #e9ecf3;
+  line-height: 35px;
+  font-size: 0.8rem;
+}
+
+tbody {
+  background-color: white;
+}
+
+.react-contexify {
+  min-width: 130px;
+  padding: 0;
+}
+
+.react-contexify__item {
+  border: 1px solid #80808029;
+}
+
+.react-datepicker__input-container {
+  margin-bottom: 25px;
+}
+
+.react-datepicker-wrapper input {
+  border: 1px solid #80808075;
+  border-radius: 3px;
+  text-indent: 5px;
+}
+
+.icon {
+  top: 5px;
+  position: relative;
+  margin-right: 5px;
+  width: 25px;
+  height: 25px;
+  padding-top: 0px;
+  cursor: pointer;
+}
+
+.icon {
+  color: #535a72;
+}
+
+.icon.plus {
+  display: block;
+  float: right;
+  height: 35px;
+  width: 35px;
+}
+
+.icon.arrowL path {
+  color: #535a72;
+}
+
+.icon.map path {
+  color: #535a72;
+}
+
+.icon.plus path {
+  color: red;
+}
+
+.icon.arrowL {
+  margin-left: 5px;
+}
+
+.menu {
+  /*width: 200px;*/
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.menu .menu-item {
+  cursor: pointer;
+  padding: 5px;
+  height: 28px;
+  vertical-align: middle;
+  line-height: 22px;
+  text-indent: 5px;
+  /*border-bottom: 1px solid rgb(187, 187, 187);*/
+}
+
+.menu-item:hover {
+  color: #2980b9;
+  background-color: rgb(187, 187, 187);
+}
+
+.popup-content {
+  width: 130px !important;
+}
+
+.corner-ribbon {
+  width: 200px;
+  background: #e43;
+  position: absolute;
+  top: 25px;
+  left: -50px;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+/* Custom styles */
+
+.corner-ribbon.sticky {
+  position: fixed;
+}
+
+.corner-ribbon.shadow {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Different positions */
+
+.corner-ribbon.top-left {
+  top: 25px;
+  left: -50px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.top-right {
+  top: 25px;
+  right: -50px;
+  left: auto;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-left {
+  top: auto;
+  bottom: 25px;
+  left: -50px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-right {
+  top: auto;
+  right: -50px;
+  bottom: 25px;
+  left: auto;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+/* Colors */
+
+.corner-ribbon.white {
+  background: #f0f0f0;
+  color: #555;
+}
+.corner-ribbon.black {
+  background: #333;
+}
+.corner-ribbon.grey {
+  background: #999;
+}
+.corner-ribbon.blue {
+  background: #39d;
+}
+.corner-ribbon.green {
+  background: #2c7;
+}
+.corner-ribbon.turquoise {
+  background: #1b9;
+}
+.corner-ribbon.purple {
+  background: #95b;
+}
+.corner-ribbon.red {
+  background: #e43;
+}
+.corner-ribbon.orange {
+  background: #e82;
+}
+.corner-ribbon.yellow {
+  background: #ec0;
+}

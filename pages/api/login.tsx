@@ -51,7 +51,7 @@ export default function handler(
           SEC_ID: hash,
           Date: Date.now().toString(),
         }
-        console.log(payload, 'payload')
+        // console.log(payload, 'payload')
 
         const KEY = 'SECRET'
         const Token = jwt.sign(payload, KEY, {

@@ -34,7 +34,7 @@ export default async function handler(
     return
   } else {
     const data = JSON.parse(req.body)
-    console.log(data, 'recived data')
+    // console.log(data, 'recived data')
 
     const Hospital = data.Hospital
     const Radiologist = data.Radiologist
