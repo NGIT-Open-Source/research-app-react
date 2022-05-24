@@ -134,8 +134,8 @@ export default function Login() {
             </h3>
             <ol>
               <li> 1. change env and restart app </li>
-              <li> 2.  </li>
-              <li> 3.  </li>
+              <li> 2. Contact devs configuring PW </li>
+              <li> 3. change vercel variablees  </li>
             </ol>
           </div>
           <button
