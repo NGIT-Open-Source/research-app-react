@@ -133,9 +133,9 @@ export default function Login() {
               Well if this is the case there are 3 ways to solve this issue
             </h3>
             <ol>
-              <li> 1. Calm downand remember the password</li>
-              <li> 2. Give your devs their Pay and ask em to reset </li>
-              <li> 3. DIY</li>
+              <li> 1. change env and restart app </li>
+              <li> 2.  </li>
+              <li> 3.  </li>
             </ol>
           </div>
           <button
